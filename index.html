@@ -22,5 +22,26 @@ a:hover{
 <p><a href=https://github.com/andrewhu-uw>My Github</a></p>
 <p><a href=other>Another Page</a></p>
 
+<div id="toReplace">Will be replaced</div>
+
+<p><button type="button" onclick="loadDoc()">Get docs through AJAX</button>
+
+<script>
+var xhttp;
+
+var replaceDocFunc = function (){
+  if(this.readyState == 4 && this.status == 200){
+    document.getElementById("toReplace").innerHTML = this.responseText;
+  }
+};
+
+function loadDoc(){
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = replaceDocFunc;
+  xhttp.open("GET", "other/test.txt", true);
+  xhttp.send();
+}
+</script>
+
 </body>
 </html>
