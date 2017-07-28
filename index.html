@@ -3,6 +3,7 @@
 <head>
 <link rel="shortcut icon" type="image/png" href="img/logo.png">
 <script src="/js/index.js"></script>
+<title>Andrew Hu</title>
 </head>
 <style>
 a:link{
@@ -29,7 +30,7 @@ a:hover{
 <script>
 var xhttp;
 
-var replaceDocFunc = function (){
+var __replaceDoc = function (){
   if(this.readyState == 4 && this.status == 200){
     document.getElementById("toReplace").innerHTML = this.responseText;
   }
@@ -37,11 +38,13 @@ var replaceDocFunc = function (){
 
 function loadDoc(){
   xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = replaceDocFunc;
+  xhttp.onreadystatechange = __replaceDoc;
   xhttp.open("GET", "other/test.txt", true);
   xhttp.send();
 }
 </script>
+
+<p><% response.write(ASP test) %></p>
 
 </body>
 </html>
