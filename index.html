@@ -3,7 +3,7 @@
 <head>
 <link rel="shortcut icon" type="image/png" href="img/logo.png">
 <script src="/js/index.js"></script>
-</head>
+
 <style>
 a:link{
   text-decoration: none;
@@ -13,6 +13,8 @@ a:hover{
   text-decoration: underline;
 }
 </style>
+</head>
+
 <body>
 
 <h2>UWIGEM Logo</h2>
@@ -22,9 +24,13 @@ a:hover{
 <p><a href=https://github.com/andrewhu-uw>My Github</a></p>
 <p><a href=other>Another Page</a></p>
 
-<div id="toReplace">Will be replaced</div>
+<div id="toReplace">Will be replaced with plain text</div>
 
 <p><button type="button" onclick="loadDoc()">Get docs through AJAX</button>
+
+<div id="toReplaceHTTP">Will be replaced with text from http</div>
+
+<p><button type="button" onclick="loadHTTP()">Get http through AJAX</button>
 
 <script>
 var xhttp;
@@ -39,6 +45,19 @@ function loadDoc(){
   xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = replaceDocFunc;
   xhttp.open("GET", "other/test.txt", true);
+  xhttp.send();
+}
+
+var replaceHTTPFunc = function() {
+  if(this.readyState == 4 && this.status == 200){
+    document.getElementById("toReplaceHTTP").innerHTML = this.responseText;
+  }
+};
+
+function loadHTTP(){
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = replaceHTTPFunc;
+  xhttp.open("GET", "js/test.js", true);
   xhttp.send();
 }
 </script>
