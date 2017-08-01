@@ -53,12 +53,13 @@ var replaceHTTPFunc = function() {
   if(this.readyState == 4 && this.status == 200){
     document.getElementById("toReplaceHTTP").innerHTML = this.responseText;
   }
+  //document.getElementById("toReplaceHTTP").innerHTML += " " + this.readyState + " " + this.status;
 };
 
 function loadHTTP(){
   xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = replaceHTTPFunc;
-  xhttp.open("GET", "js/test.js", true);
+  xhttp.open("GET", "http://localhost/node/", true);
   xhttp.send();
 }
 </script>
